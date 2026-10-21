@@ -1,3 +1,36 @@
+# Virtual Environment
 venv/
-raw_data/*.csv
+.venv/
+env/
+
+# Python Cache & Bytecode
 __pycache__/
+*.py[cod]
+*$py.class
+*.ipynb_checkpoints
+
+# Environment Variables & Secrets (Krusial agar kredensial DB aman)
+.env
+*.env
+.env.local
+
+# Raw & Large Data Files
+raw_data/*.csv
+*.csv
+*.parquet
+*.json
+!dbt_project.yml
+
+# dbt Artifacts & Compiled Files
+dbt_supply_chain/target/
+dbt_supply_chain/dbt_packages/
+dbt_supply_chain/logs/
+target/
+dbt_packages/
+logs/
+
+# IDE & OS Files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

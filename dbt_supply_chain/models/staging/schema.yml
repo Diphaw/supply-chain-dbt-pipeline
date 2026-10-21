@@ -1,0 +1,46 @@
+version: 2
+
+models:
+  - name: stg_orders
+    description: "Cleaned transactional order line items."
+    columns:
+      - name: order_item_id
+        description: "Primary key for line items."
+        tests:
+          - unique
+          - not_null
+      - name: order_id
+        tests:
+          - not_null
+      - name: customer_id
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_customers')
+                field: customer_id
+      - name: product_id
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_products')
+                field: product_id
+
+  - name: stg_customers
+    description: "Deduplicated customer profiles."
+    columns:
+      - name: customer_id
+        description: "Primary key for customer entity."
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_products
+    description: "Deduplicated product and category catalog."
+    columns:
+      - name: product_id
+        description: "Primary key for product entity."
+        tests:
+          - unique
+          - not_null

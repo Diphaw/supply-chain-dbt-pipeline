@@ -1,0 +1,16 @@
+version: 2
+
+sources:
+  - name: bronze
+    database: supply_chain_db
+    schema: bronze
+    tables:
+      - name: raw_supply_chain
+        description: "Raw supply chain transactional data ingested from CSV."
+        columns:
+          - name: order_id
+            description: "Primary identifier for orders."
+          - name: order_item_id
+            description: "Identifier for line items inside an order."
+          - name: _ingested_at
+            description: "Audit timestamp when the row was ingested."
